@@ -1,0 +1,55 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'com.ian'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    junitVersion = '5.10.2'
+}
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    // JavaEE
+    compileOnly('javax.servlet:javax.servlet-api:4.0.1')
+
+    // Lombok
+    compileOnly('org.projectlombok:lombok:1.18.24')
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    // okhttp
+    implementation('com.squareup.okhttp3:okhttp:4.10.0') {
+        // 보안에 취약한 okio 2버전 제외
+        exclude group: 'com.squareup.okio', module: 'okio'
+    }
+    // okio 최신 버전
+    implementation 'com.squareup.okio:okio:3.10.2'
+
+    // CDI
+    implementation 'javax.enterprise:cdi-api:2.0'
+
+    // Gson
+    implementation 'com.google.code.gson:gson:2.12.1'
+
+    // SQLite
+    implementation 'org.xerial:sqlite-jdbc:3.49.0.0'
+
+    // Test
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+}
+
+test {
+    useJUnitPlatform()
+}
