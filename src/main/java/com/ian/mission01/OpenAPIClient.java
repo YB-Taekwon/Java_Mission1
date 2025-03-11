@@ -33,13 +33,13 @@ public class OpenAPIClient {
                 if (!wifiResponse.isSuccessful()) throw new IOException("Unexpected code " + wifiResponse);
 
                 String responseBody = wifiResponse.body().string();
-                Gson gson = new Gson();
                 WiFiResponse wifiData = gson.fromJson(responseBody, WiFiResponse.class);
 
                 ArrayList<Row> rows = wifiData.getTbPublicWifiInfo().getRow();
-                for (Row row : rows) {
-                    System.out.println(row.getX_SWIFI_MAIN_NM());
-                }
+                System.out.println("rows = " + rows);
+//                for (Row row : rows) {
+//                    System.out.println(row.getX_SWIFI_MAIN_NM());
+//                }
             }
         }
 
