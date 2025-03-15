@@ -45,6 +45,9 @@ dependencies {
     // SQLite
     implementation 'org.xerial:sqlite-jdbc:3.49.0.0'
 
+    // JSTL
+    implementation 'javax.servlet:jstl:1.2'
+
     // Test
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
