@@ -10,7 +10,7 @@
     <script type="text/javascript" src="js/script.js"></script>
 </head>
 <body>
-<h1>사용자 위치 기반 공공 와이파이 정보 조회</h1>
+<h1>근처 와이파이 정보 조회</h1>
 <div>
     <a href="/">홈</a>
     <span>|</span>
@@ -26,9 +26,9 @@
 <div class="input-container">
     <form action="/wifi" method="post">
         <label for="lat" class="input-label">LAT:</label>
-        <input id="lat" class="input-box" name="lat" type="text" value="0.0" readonly/>
+        <input id="lat" class="input-box" name="lat" type="text" value="${location.lcLat}" readonly/>
         <label for="lnt" class="input-label">LNT:</label>
-        <input id="lnt" class="input-box" name="lnt" type="text" value="0.0" readonly/>
+        <input id="lnt" class="input-box" name="lnt" type="text" value="${location.lcLnt}" readonly/>
         <input name="action" type="hidden" value="save"/>
         <button class="cell-button" type="button" onclick="getLocation()">내 위치 가져오기</button>
         <button class="cell-button" id="submitButton" type="submit" disabled>근처 WiFi 정보 가져오기</button>
@@ -59,9 +59,31 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td colspan="17">현재 위치를 입력한 후에 조회해주세요.</td>
-        </tr>
+        <c:forEach var="row" items="${rows}">
+            <tr>
+                <td>${row.distance}</td>
+                <td>${row.wfId}</td>
+                <td>${row.wfArea}</td>
+                <c:url var="encodeURL" value="/wifi">
+                    <c:param name="wfId" value="${row.wfId}"/>
+                    <c:param name="action" value="info"/>
+                </c:url>
+                <td><a href="${encodeURL}">${row.wfName}</a></td>
+                <td>${row.wfAddress1}</td>
+                <td>${row.wfAddress2}</td>
+                <td>${row.wfFloor}</td>
+                <td>${row.wfType}</td>
+                <td>${row.wfProvider}</td>
+                <td>${row.wfService}</td>
+                <td>${row.wfNetwork}</td>
+                <td>${row.wfYear}</td>
+                <td>${row.wfInOut}</td>
+                <td>${row.wfCondition}</td>
+                <td>${row.wfLat}</td>
+                <td>${row.wfLnt}</td>
+                <td>${row.wfDate}</td>
+            </tr>
+        </c:forEach>
         </tbody>
     </table>
 </div>
