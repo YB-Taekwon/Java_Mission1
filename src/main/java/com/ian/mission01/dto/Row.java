@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Getter
@@ -51,8 +52,4 @@ public class Row {
         this.wfName = wfName;
     }
 
-    public Row(String wfLnt, String wfLat) {
-        this.wfLnt = wfLnt;
-        this.wfLat = wfLat;
-    }
 }

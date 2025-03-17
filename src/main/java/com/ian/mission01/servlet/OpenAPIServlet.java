@@ -25,13 +25,14 @@ public class OpenAPIServlet extends HttpServlet {
     private static final String API_URL = "http://openapi.seoul.go.kr:8088/4258714f4b6a787832346863627a6a/json/TbPublicWifiInfo/%d/%d/";
     private static OkHttpClient client = new OkHttpClient();
     private static Gson gson = new Gson();
-    private WiFiRepository wiFiRepository;
+    private static WiFiRepository wiFiRepository;
 
 
     @Override
     public void init() {
-        wiFiRepository = new WiFiRepository();
+        wiFiRepository = WiFiRepository.getInstance();
     }
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -68,7 +69,7 @@ public class OpenAPIServlet extends HttpServlet {
         }
 
         req.setAttribute("totalItems", totalItems);
-        req.getRequestDispatcher("load-wifi.jsp").forward(req, resp);
+        req.getRequestDispatcher("/wifi/load-wifi.jsp").forward(req, resp);
     }
 
 
