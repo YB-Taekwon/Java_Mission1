@@ -15,20 +15,25 @@
   - 와이파이 위치, 사용자 위치 간 거리 계산
 - 북마크 구현
   - 테이블 조인
-- 브라우저에 출력
+
+<br>
+
+- **Web Layer**
   - Servlet + JSP
+- **Persistence Layer**
+  - JDBC
 
 <br>
 
 ## Development Environment
-- Java
+- **Java**
   - Platform: JakartaEE 8
   - Template: Web Application
   - Version: JDK 1.8
-- IDE: IntelliJ Ultimate
-- DataBase: SQLite
-- Server: apache-tomcat-8.5.99
-- Build: Gradle
+- **IDE**: IntelliJ Ultimate
+- **DataBase**: SQLite
+- **Server**: apache-tomcat-8.5.99
+- **Build**: Gradle
 
 <br>
 
